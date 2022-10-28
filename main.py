@@ -22,7 +22,6 @@ def make_sin() -> np.core.multiarray:
 
 def make_echantillon(val_signal: float, power_of_two: int) -> int:
     quantum = AMPLITUDE / (2 ** power_of_two - 1)
-    nb_foi_quantum = val_signal // quantum
     list_quantum = [i * quantum for i in range(0, 2 ** power_of_two + 1)]
     list_quantum.append(val_signal)
     list_quantum.sort()
@@ -33,7 +32,7 @@ def make_echantillon(val_signal: float, power_of_two: int) -> int:
     elif math.fabs(list_quantum[index - 1] - val_signal) > math.fabs(list_quantum[index + 1] - val_signal):
         return list_quantum[index + 1]
     else:
-        return list_quantum[index - 1]
+        return 1 
 
 
 # Make echantillon
